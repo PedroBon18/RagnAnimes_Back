@@ -28,8 +28,9 @@ public class Anime {
     private String imagem;
     @Enumerated(EnumType.STRING)  
     private Genero genero;  
-    private String sinopse; 
-    private Boolean ativo = true;//Trocar para usuario
+    private String sinopse;
+    private String anoLancamento;
+    
 
     public Anime(DadosCadastroAnime dados){
         this.nome = dados.nome();
@@ -37,15 +38,12 @@ public class Anime {
         this.imagem = dados.imagem();
         this.genero = dados.genero();
         this.sinopse = dados.sinopse();
-    }
-    public void exclusaologica(){
-        this.ativo = false;
+        this.anoLancamento = dados.anoLancamento();
     }
     public void atualizaInfo(DadosAtualizadoAnime dados){
         if (dados.nome() != null){
             this.nome = dados.nome();
         }
-        
         if (dados.estudio() != null){
             this.estudio = dados.estudio();
         }

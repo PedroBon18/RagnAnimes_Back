@@ -1,5 +1,7 @@
 package com.ragnanimes.api.models.usuario;
 
-public class UsuarioRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsuarioRepository extends JpaRepository<Usuario , Integer>{
     
 }
