@@ -1,15 +1,9 @@
 package com.ragnanimes.api.models.usuario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.ragnanimes.api.models.comentario.Comentario;
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.*;
 
 @Getter
 @Setter
@@ -27,6 +21,9 @@ public class Usuario {
     private String imagem;
     @Enumerated(EnumType.STRING)
     private Role role;
+    
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> comentarios = new ArrayList<>();
 
     public Usuario(DadosCadastroUsuario dados){
         this.user = dados.user();

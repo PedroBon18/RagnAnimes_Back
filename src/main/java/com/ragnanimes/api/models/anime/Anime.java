@@ -1,24 +1,23 @@
 package com.ragnanimes.api.models.anime;
+import java.util.ArrayList;
+
 import com.ragnanimes.api.models.anime.Anime;
 import com.ragnanimes.api.models.anime.DadosCadastroAnime;
 import com.ragnanimes.api.models.anime.Genero;
+import com.ragnanimes.api.models.comentario.Comentario;
+import com.ragnanimes.api.models.likes.Likes;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "anime")
 public class Anime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +29,11 @@ public class Anime {
     private Genero genero;  
     private String sinopse;
     private String anoLancamento;
+    @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> comentarios = new ArrayList<>();
+
+    @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Likes> likes = new ArrayList<>();
     
 
     public Anime(DadosCadastroAnime dados){
@@ -46,6 +50,18 @@ public class Anime {
         }
         if (dados.estudio() != null){
             this.estudio = dados.estudio();
+        }
+        if (dados.estudio() != null){
+            this.imagem = dados.imagem();
+        }
+        if (dados.estudio() != null){
+            this.genero = dados.genero();
+        }
+        if (dados.estudio() != null){
+            this.sinopse = dados.sinopse();
+        }
+        if (dados.estudio() != null){
+            this.anoLancamento = dados.anoLancamento();
         }
     }
 }
