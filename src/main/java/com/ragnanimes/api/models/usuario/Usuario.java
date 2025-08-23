@@ -14,7 +14,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String user;
+    private String usur;
     private String senha;
     private String dataCriacao;
     private String email;
@@ -26,7 +26,7 @@ public class Usuario {
     private List<Comentario> comentarios = new ArrayList<>();
 
     public Usuario(DadosCadastroUsuario dados){
-        this.user = dados.user();
+        this.usur = dados.user();
         this.senha = dados.senha();
         this.email = dados.email();
         this.dataCriacao = dados.dataCriacao();

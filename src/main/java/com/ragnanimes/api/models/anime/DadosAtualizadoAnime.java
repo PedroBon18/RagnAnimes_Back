@@ -7,7 +7,8 @@ public record DadosAtualizadoAnime(
     String imagem,
     String sinopse,
     Genero genero,
-    String anoLancamento
+    String anoLancamento,
+    String trailer
 ) {
     
 }

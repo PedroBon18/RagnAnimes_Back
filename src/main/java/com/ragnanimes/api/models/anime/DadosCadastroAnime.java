@@ -6,7 +6,8 @@ public record DadosCadastroAnime(
     String imagem,
     Genero genero,
     String sinopse,
-    String anoLancamento
+    String anoLancamento,
+    String trailer
     ) {
     
 }

@@ -29,6 +29,7 @@ public class Anime {
     private Genero genero;  
     private String sinopse;
     private String anoLancamento;
+    private String trailer;
     @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios = new ArrayList<>();
 
@@ -43,6 +44,7 @@ public class Anime {
         this.genero = dados.genero();
         this.sinopse = dados.sinopse();
         this.anoLancamento = dados.anoLancamento();
+        this.trailer = dados.trailer();
     }
     public void atualizaInfo(DadosAtualizadoAnime dados){
         if (dados.nome() != null){
@@ -51,17 +53,20 @@ public class Anime {
         if (dados.estudio() != null){
             this.estudio = dados.estudio();
         }
-        if (dados.estudio() != null){
+        if (dados.imagem() != null){
             this.imagem = dados.imagem();
         }
-        if (dados.estudio() != null){
+        if (dados.genero() != null){
             this.genero = dados.genero();
         }
-        if (dados.estudio() != null){
+        if (dados.sinopse() != null){
             this.sinopse = dados.sinopse();
         }
-        if (dados.estudio() != null){
+        if (dados.anoLancamento() != null){
             this.anoLancamento = dados.anoLancamento();
+        }
+        if(dados.trailer() != null){
+            this.trailer = dados.trailer();
         }
     }
 }
