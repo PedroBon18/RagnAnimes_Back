@@ -30,6 +30,8 @@ public class Anime {
     private String sinopse;
     private String anoLancamento;
     private String trailer;
+    private boolean ativo = true;
+
     @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios = new ArrayList<>();
 
@@ -68,5 +70,9 @@ public class Anime {
         if(dados.trailer() != null){
             this.trailer = dados.trailer();
         }
+    }
+    public void adicionarLike(Likes like) {
+        likes.add(like);
+        like.setAnime(this);
     }
 }
